@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     groupadd -r rails && useradd -r -g rails -u 1001 rails
 COPY --from=builder /app/.bundle /app/.bundle
 COPY --from=builder /app/vendor/bundle /app/vendor/bundle
+COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY . .
 RUN mkdir -p tmp log storage && \
     chown -R rails:rails tmp log storage && \
